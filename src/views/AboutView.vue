@@ -1,28 +1,50 @@
 <script setup lang="ts">
-const inputTypes = ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'month', 'number', 'password', 'radio', 'range', 'search', 'select', 'submit', 'tel', 'text', 'textarea', 'time', 'url', 'week']
-const inputOptions = {
-  checkbox: ['I like Tailwind', 'I also like FormKit', 'I like other things too'],
-  radio: ['I like Tailwind', 'I like FormKit', 'I like everything'],
-  select: ['I like Tailwind', 'I like FormKit', 'I like everything'],
-}
+
 </script>
 
 <template>
-   <FormKit
-    v-for="type in inputTypes"
-    :key="type"
-    :label="`This is a ${type} input`"
-    :type="type"
-    :placeholder="`${type} input placeholder`"
-    :options="inputOptions[type] ? inputOptions[type] : null"
-    :help="`Help text for the ${type} input`"
-    :multiple="type === 'file'"
-    :disabled="type === 'date' ? true : undefined"
-    :validation="type === 'email' ? 'required|email' : 'required'"
-    :validation-visibility="type === 'email' ? 'live' : 'blur'"
-    :validation-label="type"
-  />
+  <div class="shadow overflow-hidden pt-5">
+    <div class="px-4 py-5 bg-slate-100 sm:p-6 rounded-md">
+      <FormKit
+        type="form"
+        :value="{
+          location: 'New York City',
+          duration: '2 weeks',
+          price: 'average'
+        }"
+        submit-label="Save"
+        @submit="save"
+      >
+        <h2>Edit request</h2>
+        <p>Edit your housing request below.</p>
+        <FormKit
+          type="text"
+          name="location"
+          label="Location"
+          help="Where would you like to stay?"
+          validation="required"
+        />
+        <FormKit
+          type="text"
+          name="duration"
+          label="Duration"
+          help="How long would you like to stay?"
+          validation="required"
+        />
+        <FormKit
+          type="radio"
+          name="price"
+          label="Pricing"
+          help="How much are you able to pay"
+          :options="{
+            low: 'Below average',
+            average: 'Average',
+            high: 'Super luxe'
+          }"
+        />
+      </FormKit>
+    </div>
+  </div>
 </template>
-
 
 <style></style>

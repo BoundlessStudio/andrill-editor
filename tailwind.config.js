@@ -1,15 +1,15 @@
 /* eslint-env node */
-const formKitTailwind = require("@formkit/themes/tailwindcss");
 
 module.exports = {
-  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
-    "./formkit.config.js"
+    './formkit.config.js'
   ],
   theme: {
     extend: {},
   },
-  plugins: [formKitTailwind],
+  plugins: [
+    require('@formkit/themes/tailwindcss')
+  ],
 };
