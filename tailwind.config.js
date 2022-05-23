@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'pixel': ['VT323', 'sans-serif']
+        pixel: ["VT323", "sans-serif"],
       },
     },
   },

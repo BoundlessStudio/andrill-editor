@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router" //RouterLink
+import { RouterView } from "vue-router"; //RouterLink
 </script>
 
 <template>
@@ -9,6 +9,6 @@ import { RouterView } from "vue-router" //RouterLink
 </template>
 
 <style lang="scss">
-@import '@/assets/styles/main.scss';
-@import '@/assets/styles/tailwind.scss';
+@import "@/assets/styles/main.scss";
+@import "@/assets/styles/tailwind.scss";
 </style>
