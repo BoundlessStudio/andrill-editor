@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchComponent from "@/components/SearchComponent.vue";
+import GlobalSearch from "@/components/GlobalSearch.vue";
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import SearchComponent from "@/components/SearchComponent.vue";
       <h1 class="text-9xl text-purple-700 dark:text-purple-400">
         Andrill
       </h1>
-      <SearchComponent />
+      <GlobalSearch />
     </div>
   </div>
 </template>

@@ -1,15 +1,18 @@
 import { defineStore } from "pinia";
+import type { RouteRecordNormalized } from "vue-router";
 import router from "@/router/";
 
 export class SearchResult {
   public path: string;
-  public name: string;
-  public icon: string;
+  public editor: string;
+  public icons: Array<string>;
+  public item: string | undefined
 
-  constructor (name: string, icon: string, path: string) {
-    this.name = name;
-    this.icon = icon;
-    this.path = path;
+  constructor (route: RouteRecordNormalized, id = "", name = undefined) {
+    this.editor = route.name?.toString() || ""
+    this.icons = route.meta.icons
+    this.path = route.path.replace(":id?", id)
+    this.item = name
   }
 }
 
@@ -31,23 +34,21 @@ export const useStore = defineStore({
       this.term = term;
 
       // Search Results from All Stores
-      let collection = new Array<SearchResult>();
-
-      // Search Results for Router to Edtiors
+      const collection = new Array<SearchResult>();
       const routes = router.getRoutes();
-      const pages = routes
-        .filter((z) => z.meta.search.some((x) => x.includes(term)))
-        .map(
-          (_) => new SearchResult(_.name?.toString() || "", _.meta.icon, _.path)
-        );
-      collection = collection.concat(pages);
+      for (const route of routes) {
+        if(route.meta.search.some((x) => x.includes(term))) {
+          const item = new SearchResult(route)
+          collection.push(item)
+        }
 
-      // TODO:
-      // Get Search Results From Stores
-      // Match the Results to the Routes
+        // if(route.name)
+
+        // TDOO: Add Store Serch
+      }
 
       this.results = collection.slice(0, 10);
-      this.hasResults = collection.length > 0;
+      this.hasResults = this.results.length > 0;
     },
   },
 });

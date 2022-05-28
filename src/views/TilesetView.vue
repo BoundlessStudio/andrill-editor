@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import EditorAside from "@/components/EditorAside.vue"
-import { useStore } from "@/stores/RaceEditor"
+import { useStore } from "@/stores/TilesetEditor"
 import { storeToRefs } from "pinia";
 import { provide } from "vue";
 
@@ -13,7 +13,7 @@ provide('store', store)
 
 <template>
   <div class="flex">
-    <EditorAside name="Civilization / Races" />
+    <EditorAside name="Environment / Tilesets" />
     <section>
       <p>{{ item?.name ?? "None" }} {{ item?.id ?? "" }}</p>
       <!-- TOOD -->

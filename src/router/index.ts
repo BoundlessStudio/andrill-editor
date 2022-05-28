@@ -4,10 +4,18 @@ import HomeView from "../views/HomeView.vue";
 // component: () => import("../views/ABCView.vue"),
 // route level code-splitting this generates a separate chunk (ABC.[hash].js) for this route
 
+// onBeforeRouteLeave((to, from) => {
+//   const answer = window.confirm(
+//     'Do you really want to leave? you have unsaved changes!'
+//   )
+//   // cancel the navigation and stay on the same page
+//   if (!answer) return false
+// })
+
 declare module "vue-router" {
   interface RouteMeta {
-    search: Array<string>;
-    icon: string;
+    search: Array<string>
+    icons: Array<string>
   }
 }
 
@@ -20,7 +28,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         search: ["home", "search"],
-        icon: "home",
+        icons: ["home"],
       },
     },
     {
@@ -29,7 +37,7 @@ const router = createRouter({
       component: () => import("../views/SimulationView.vue"),
       meta: {
         search: ["test", "simulation"],
-        icon: "flask-vial",
+        icons: ["flask-vial"],
       },
     },
     {
@@ -38,7 +46,16 @@ const router = createRouter({
       component: () => import("../views/GenerationView.vue"),
       meta: {
         search: ["test", "generation"],
-        icon: "compass-drafting",
+        icons: ["compass-drafting"],
+      },
+    },
+    {
+      path: "/environment/tilesets",
+      name: "Tilesets",
+      component: () => import("../views/TilesetView.vue"),
+      meta: {
+        search: ["environment", "tileset"],
+        icons: ["map"],
       },
     },
     {
@@ -47,7 +64,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["environment", "calendar", "cycles", "time"],
-        icon: "calendar-days",
+        icons: ["calendar-days"],
       },
     },
     {
@@ -56,7 +73,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["environment", "biomes"],
-        icon: "globe",
+        icons: ["globe"],
       },
     },
     {
@@ -65,7 +82,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["environment", "stages"],
-        icon: "clapperboard",
+        icons: ["clapperboard"],
       },
     },
     {
@@ -74,7 +91,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["environment", "wildlife"],
-        icon: "paw",
+        icons: ["paw"],
       },
     },
     {
@@ -83,52 +100,52 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["environment", "materials"],
-        icon: "leaf",
+        icons: ["leaf"],
       },
     },
     {
-      path: "/civilizations/races",
+      path: "/civilization/races/:id?",
       name: "Races",
       component: () => import("../views/RaceView.vue"),
       meta: {
-        search: ["civilizations", "races"],
-        icon: "people-group",
+        search: ["civilization", "races"],
+        icons: ["people-group"],
       },
     },
     {
-      path: "/civilizations/sites",
+      path: "/civilization/sites",
       name: "Sites",
       component: () => import("../views/DatabaseView.vue"),
       meta: {
-        search: ["civilizations", "sites"],
-        icon: "flag",
+        search: ["civilization", "sites"],
+        icons: ["flag"],
       },
     },
     {
-      path: "/civilizations/religions",
+      path: "/civilization/religions",
       name: "Religions",
       component: () => import("../views/DatabaseView.vue"),
       meta: {
-        search: ["civilizations", "religions"],
-        icon: "person-praying",
+        search: ["civilization", "religions"],
+        icons: ["person-praying"],
       },
     },
     {
-      path: "/civilizations/military",
+      path: "/civilization/military",
       name: "Military",
       component: () => import("../views/DatabaseView.vue"),
       meta: {
-        search: ["civilizations", "military"],
-        icon: "person-military-pointing",
+        search: ["civilization", "military"],
+        icons: ["person-military-pointing"],
       },
     },
     {
-      path: "/civilizations/economics",
+      path: "/civilization/economics",
       name: "Economics",
       component: () => import("../views/DatabaseView.vue"),
       meta: {
-        search: ["civilizations", "economics"],
-        icon: "money-bill",
+        search: ["civilization", "economics"],
+        icons: ["money-bill"],
       },
     },
     {
@@ -137,7 +154,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "attributes"],
-        icon: "superscript",
+        icons: ["superscript"],
       },
     },
     {
@@ -146,7 +163,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "status"],
-        icon: "person-circle-exclamation",
+        icons: ["person-circle-exclamation"],
       },
     },
     {
@@ -155,7 +172,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "skill"],
-        icon: "arrow-up-right-dots",
+        icons: ["arrow-up-right-dots"],
       },
     },
     {
@@ -164,7 +181,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "goals"],
-        icon: "bullseye",
+        icons: ["bullseye"],
       },
     },
     {
@@ -173,7 +190,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "beliefs"],
-        icon: "heart",
+        icons: ["heart"],
       },
     },
     {
@@ -182,7 +199,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "thoughts"],
-        icon: "brain",
+        icons: ["brain"],
       },
     },
     {
@@ -191,7 +208,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "ethics"],
-        icon: "ribbon",
+        icons: ["ribbon"],
       },
     },
     {
@@ -200,7 +217,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "needs"],
-        icon: "list-check",
+        icons: ["list-check"],
       },
     },
     {
@@ -209,7 +226,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["agent", "actors"],
-        icon: "user-large",
+        icons: ["user-large"],
       },
     },
     {
@@ -218,7 +235,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["drama", "hooks", "story"],
-        icon: "masks-theater",
+        icons: ["masks-theater"],
       },
     },
     {
@@ -227,7 +244,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["drama", "dialog"],
-        icon: "comment",
+        icons: ["comment"],
       },
     },
     {
@@ -236,7 +253,7 @@ const router = createRouter({
       component: () => import("../views/DatabaseView.vue"),
       meta: {
         search: ["drama", "verbs"],
-        icon: "language",
+        icons: ["language"],
       },
     },
   ],

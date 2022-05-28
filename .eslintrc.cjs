@@ -24,7 +24,6 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    // Airbnb with a couple of minor tweaks
     'object-shorthand': ['error', 'always'],
     'indent': ['error', 2],
     'linebreak-style': 'off',
@@ -42,6 +41,14 @@ module.exports = {
       multiline: 'never',
     }],
     'vue/multi-word-component-names': 'off',
+    "vue/max-attributes-per-line": ["warn", {
+      "singleline": {
+        "max": 5
+      },      
+      "multiline": {
+        "max": 1
+      }
+    }],
     // These are weird inconsistencies between eslint and typescript eslint integration. Need to make some GitHub issues.
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
