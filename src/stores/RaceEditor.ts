@@ -22,4 +22,4 @@ export class Race extends Entity {
   public lookup: string | undefined
 }
 
-export const useStore = storeFactory<Race>("Race", Race)
+export const useStore = storeFactory<Race>("Races", Race)

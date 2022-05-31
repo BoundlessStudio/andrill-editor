@@ -8,4 +8,4 @@ export class Tileset extends Entity {
   }
 }
 
-export const useStore = storeFactory<Tileset>("Tileset", Tileset)
+export const useStore = storeFactory<Tileset>("Tilesets", Tileset)
