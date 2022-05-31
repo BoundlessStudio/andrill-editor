@@ -4,23 +4,15 @@ import { storeToRefs } from "pinia";
 import { watch, ref, inject } from "vue"; // , reactive
 import { useRoute, useRouter } from "vue-router";
 
-const props = defineProps<{
-  name: string
-}>()
-
-// const emit = defineEmits<{
-//   (e: 'new'): void
-//   (e: 'delete', id: string): void
-//   (e: 'selected', id: string): void
-//   (e: 'search', term: string): void
-// }>()
-
 const router = useRouter()
 const route = useRoute()
 const route_name = route.name?.toString()
 
 const store = inject('store') as IStoreGeneric
 const { collection } = storeToRefs(store)
+
+const prefix = inject('prefix') as string
+const name = inject('name') as string
 
 const term = ref("")
 watch(term, (current) => {
@@ -75,7 +67,7 @@ if(route.params.id) {
         <div class="h-10v">
           <ul class="space-y-1">
             <li class="pl-2">
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline cursor-pointer" @click="clear">{{ props.name }}</span>
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline cursor-pointer" @click="clear">{{ prefix }} / {{ name }}</span>
             </li>
             <li class="w-56">
               <div class="flex w-full">

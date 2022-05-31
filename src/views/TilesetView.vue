@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import EditorAside from "@/components/EditorAside.vue"
-import { useStore } from "@/stores/TilesetEditor"
+import EditorMain from "@/components/EditorMain.vue"
 import { storeToRefs } from "pinia";
 import { provide } from "vue";
+import { useStore as useTilesetStore  } from "@/stores/TilesetEditor"
 
-const store = useStore()
-const { item } = storeToRefs(store)
+let tilesetStore = useTilesetStore()
+const { item } = storeToRefs(tilesetStore)
+provide('store', tilesetStore)
+provide('prefix', "Environment")
+provide('name', "Tileset")
+// provide('help', "")
 
-// https://vuejs.org/api/composition-api-dependency-injection.html
-provide('store', store)
 </script>
 
 <template>
   <div class="flex">
-    <EditorAside name="Environment / Tilesets" />
-    <section>
-      <p>{{ item?.name ?? "None" }} {{ item?.id ?? "" }}</p>
-      <!-- TOOD -->
-      <!-- Editor -->
-    </section>
+    <EditorAside />
+    <EditorMain>
+      <template v-if="item">
+        <input v-model="item.name">
+      </template>
+    </EditorMain>
   </div>
 </template>
 
