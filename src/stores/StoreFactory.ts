@@ -1,18 +1,23 @@
-import { defineStore } from "pinia";
-//import { ref } from "vue";
+import { defineStore, type StoreGeneric } from "pinia";
 import type { Ref } from "vue";
 import type { IEntity, INewEntity } from "./IEntity";
-import { useStorage } from '@vueuse/core'
+
+export interface IStoreGeneric extends StoreGeneric
+{
+  // collection: Array<IEntity>
+  search (name:string): void
+  add (): string
+  delete (id:string): void 
+  select (id: string): void 
+}
 
 export function storeFactory<T extends IEntity> (storeName: string, TCreator: INewEntity) {
-  // item: undefined as T | undefined
-  //items: ref<T[]>([]) as Ref<T[]>,
-      
+
   const useStore = defineStore({
     id: storeName,
     state: () => ({
       filter: "",
-      items: useStorage<IEntity[]>(storeName, []),
+      items: [] as Array<IEntity>, 
       item: undefined as Ref<T> | undefined
     }),
     getters: {
@@ -24,7 +29,7 @@ export function storeFactory<T extends IEntity> (storeName: string, TCreator: IN
       },
     },
     actions: {
-      search (name:string) {
+      search (name:string): void {
         this.filter = name.toLocaleLowerCase()
       },
       add (): string {
@@ -32,14 +37,19 @@ export function storeFactory<T extends IEntity> (storeName: string, TCreator: IN
         this.items.push(item)
         return item.id
       },
-      delete (id:string) {
+      delete (id:string): void {
         this.items = this.items.filter(_ => _.id != id)
       },
-      select (id: string) {
+      select (id: string): void {
         this.item = (id) ? this.items.find(_ => _.id == id) as T : undefined
       }
     },
+    persist: {
+      key: storeName,
+      storage: window.localStorage
+      //storage: window.sessionStorage,
+    },
   })
-  return useStore
 
+  return useStore
 }

@@ -1,6 +1,7 @@
-import { defineStore } from "pinia";
-import type { RouteRecordNormalized } from "vue-router";
-import router from "@/router/";
+import { defineStore } from "pinia"
+import { useStore as useStoreRace } from "@/stores/RaceEditor";
+import type { RouteRecordNormalized } from "vue-router"
+import router from "@/router/"
 
 export class SearchResult {
   public path: string;
@@ -8,7 +9,7 @@ export class SearchResult {
   public icons: Array<string>;
   public item: string | undefined
 
-  constructor (route: RouteRecordNormalized, id = "", name = undefined) {
+  constructor (route: RouteRecordNormalized, id = "", name: string| undefined = undefined) {
     this.editor = route.name?.toString() || ""
     this.icons = route.meta.icons
     this.path = route.path.replace(":id?", id)
@@ -26,29 +27,35 @@ export const useStore = defineStore({
   //getters: {},
   actions: {
     clear () {
-      this.hasResults = false;
+      this.hasResults = false
       this.results = [];
     },
     search (term: string) {
+      const storeRace = useStoreRace()
+
       // Search Term
-      this.term = term;
+      this.term = term
 
       // Search Results from All Stores
-      const collection = new Array<SearchResult>();
-      const routes = router.getRoutes();
+      const collection = new Array<SearchResult>()
+      const routes = router.getRoutes()
       for (const route of routes) {
         if(route.meta.search.some((x) => x.includes(term))) {
           const item = new SearchResult(route)
           collection.push(item)
         }
+        
+        const races = storeRace.items.filter(_ => _.name.toLocaleLowerCase().includes(term))    
+        for (const entiy of races) {
+          const item = new SearchResult(route, entiy.id, entiy.name)
+          collection.push(item)
+        }
 
-        // if(route.name)
-
-        // TDOO: Add Store Serch
+        // TDOO: Add Other Stores to Search
       }
 
-      this.results = collection.slice(0, 10);
-      this.hasResults = this.results.length > 0;
+      this.results = collection.slice(0, 10)
+      this.hasResults = this.results.length > 0
     },
   },
 });

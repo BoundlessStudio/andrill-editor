@@ -35,14 +35,15 @@ watch(() => route.name, () => {
   <div class="h-24">
     <div v-if="hasResults" class="flex justify-center">
       <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
-        <template v-for="item in results" :key="item.editor">
-          <router-link :to="item.path">
+        <template v-for="result in results" :key="result.path">
+          <router-link :to="result.path">
             <li class="grid grid-cols-2 gap-4 px-6 py-2 border-b border-gray-200 w-full cursor-pointer">
               <div>
                 <font-awesome-layers>
-                  <font-awesome-icon v-for="icon in item.icons" :key="icon" :icon="icon" />
+                  <font-awesome-icon v-for="icon in result.icons" :key="icon" :icon="icon" />
                 </font-awesome-layers>
-                <span class="pl-2">{{ item.editor }}</span>
+                <span class="pl-2">{{ result.editor }}</span>
+                <span v-if="result.item"> - {{ result.item }}</span>
               </div>
             </li>
           </router-link>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { storeToRefs, type StoreGeneric } from "pinia";
+import type { IStoreGeneric } from "@/stores/StoreFactory";
+import { storeToRefs } from "pinia";
 import { watch, ref, inject } from "vue"; // , reactive
 import { useRoute, useRouter } from "vue-router";
 
@@ -18,7 +19,7 @@ const router = useRouter()
 const route = useRoute()
 const route_name = route.name?.toString()
 
-const store = inject('store') as StoreGeneric
+const store = inject('store') as IStoreGeneric
 const { collection } = storeToRefs(store)
 
 const term = ref("")
@@ -53,55 +54,64 @@ function selectItem (id: string) {
   router.push({ name: route_name, params: { id } })
 }
 
+if(route.params.id) {
+  let id = route.params.id as string
+  store.select(id)
+}
+
 </script>
 
 <template>
-  <aside class="w-64">
-    <div class="overflow-y-auto py-2 px-3 bg-gray-50 rounded dark:bg-gray-800 h-screen">
-      <ul class="space-y-2">
-        <li class="pl-1">
-          <router-link to="/">
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline">Andrill</span>
-          </router-link>
-        </li>
-      </ul>
-      <ul class="space-y-1 pt-2 mt-4 border-t border-gray-200 dark:border-gray-700">
-        <li class="pb-2 pl-1">
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline cursor-pointer" @click="clear">{{ props.name }}</span>
-        </li>
-        <li class="w-56">
-          <div class="flex w-full">
-            <div class="w-48 p-2">
-              <input v-model="term" type="search" class="my-search" placeholder="Search...">
-            </div>
-            <div>
-              <button class=" text-white font-bold pt-4 pl-1 rounded" title="New" @click="newItem">
-                <font-awesome-icon icon="plus" class="text-green-400 hover:text-green-300" />
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <ul class="pt-2 mt-4 space-y-1 border-t border-gray-200 dark:border-gray-700 dark:text-white">
-        <div>
-          <template v-for="item in collection" :key="item.id">
-            <li class="w-56 p-2">
-              <div class="flex">
-                <div class="w-48 truncate">
-                  <span class="hover:underline cursor-pointer" @click="selectItem(item.id)">
-                    {{ item.name }}
-                  </span>
+  <aside class="w-64 h-95v mr-3">
+    <div class="p-3 h-15 bg-white rounded border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <p class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+        <router-link to="/">
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline">Andrill</span>
+        </router-link>
+      </p>
+    </div>
+    <div class="p-3 h-15 mt-3 bg-white rounded border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class="h-85v">
+        <div class="h-10v">
+          <ul class="space-y-1">
+            <li class="pl-2">
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white hover:underline cursor-pointer" @click="clear">{{ props.name }}</span>
+            </li>
+            <li class="w-56">
+              <div class="flex w-full">
+                <div class="w-48 p-2">
+                  <input v-model="term" type="search" class="my-search" placeholder="Search...">
                 </div>
                 <div>
-                  <button class="text-white font-bold px-2 rounded" title="Delete" @click="deleteItem(item.id)">
-                    <font-awesome-icon icon="times" class="text-red-400 hover:text-red-300" />
+                  <button class=" text-white font-bold pt-4 pl-1 rounded" title="New" @click="newItem">
+                    <font-awesome-icon icon="plus" class="text-green-400 hover:text-green-300" />
                   </button>
                 </div>
               </div>
             </li>
-          </template>
+          </ul>
         </div>
-      </ul>
+        <div class="h-75v overflow-y-auto overflow-x-hidden border-t border-b border-gray-200 dark:border-gray-700 ">
+          <ul class="space-y-1dark:text-white  ">
+            <template v-for="item in collection" :key="item.id">
+              <li class="w-56 p-2">
+                <div class="flex">
+                  <div class="w-48 truncate">
+                    <span class="hover:underline cursor-pointer" @click="selectItem(item.id)">
+                      {{ item.name }}
+                    </span>
+                  </div>
+                  <div>
+                    <button class="text-white font-bold px-2 rounded" title="Delete" @click="deleteItem(item.id)">
+                      <font-awesome-icon icon="times" class="text-red-400 hover:text-red-300" />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
     </div>
   </aside>
 </template>
