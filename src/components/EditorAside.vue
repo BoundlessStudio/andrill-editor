@@ -43,6 +43,7 @@ function deleteItem (id: string) {
 }
 
 function selectItem (id: string) {
+  console.log("Route", { route_name, id });
   router.push({ name: route_name, params: { id } })
 }
 
@@ -90,7 +91,7 @@ if(route.params.id) {
                 <div class="flex">
                   <div class="w-48 truncate">
                     <span class="hover:underline cursor-pointer" @click="selectItem(item.id)">
-                      {{ item.name }}
+                      {{ item.name || "[Item]" }}
                     </span>
                   </div>
                   <div>
@@ -108,8 +109,8 @@ if(route.params.id) {
   </aside>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .my-search {
-  @apply block w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  @apply flex-auto min-w-0 block w-full px-3 py-1 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
 }
 </style>

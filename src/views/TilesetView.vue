@@ -19,12 +19,20 @@ provide('name', "Tileset")
     <EditorAside />
     <EditorMain>
       <template v-if="item">
-        <input v-model="item.name">
+        <div class="mb-6">
+          <label for="email" class="my-label">Name</label>
+          <input v-model="item.name" type="text" required class="my-custom-input">
+        </div>
       </template>
     </EditorMain>
   </div>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.my-label {
+ @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300
+}
+.my-custom-input {
+  @apply flex-auto min-w-0 block w-full px-3 py-1 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+}
 </style>

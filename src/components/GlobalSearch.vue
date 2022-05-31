@@ -37,7 +37,7 @@ watch(() => route.name, () => {
       <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
         <template v-for="result in results" :key="result.path">
           <router-link :to="result.path">
-            <li class="grid grid-cols-2 gap-4 px-6 py-2 border-b border-gray-200 w-full cursor-pointer">
+            <li class="grid grid-cols-1 gap-4 px-6 py-2 border-b border-gray-200 w-full cursor-pointer">
               <div>
                 <font-awesome-layers>
                   <font-awesome-icon v-for="icon in result.icons" :key="icon" :icon="icon" />
@@ -53,7 +53,7 @@ watch(() => route.name, () => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .my-search {
     @apply relative flex-auto min-w-0 block w-full px-3 py-2 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
 }

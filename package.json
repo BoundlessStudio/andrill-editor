@@ -14,7 +14,6 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
-    "flowbite": "^1.4.7",
     "nanoid": "^3.3.4",
     "node-sass": "^7.0.1",
     "pinia": "^2.0.13",

@@ -50,7 +50,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/environment/tilesets",
+      path: "/environment/tilesets/:id?",
       name: "Tilesets",
       component: () => import("../views/TilesetView.vue"),
       meta: {

@@ -4,7 +4,7 @@ import type { IEntity, INewEntity } from "./IEntity";
 
 export interface IStoreGeneric extends StoreGeneric
 {
-  // collection: Array<IEntity>
+  items: Array<IEntity>
   search (name:string): void
   add (): string
   delete (id:string): void 

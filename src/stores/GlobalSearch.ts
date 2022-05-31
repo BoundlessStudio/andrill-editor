@@ -1,9 +1,11 @@
-import { defineStore } from "pinia"
-import { useStore as useStoreRace } from "@/stores/RaceEditor";
-import type { RouteRecordNormalized } from "vue-router"
 import router from "@/router/"
+import { defineStore } from "pinia"
+import type { RouteRecordNormalized } from "vue-router"
 import type { IStoreGeneric } from "./StoreFactory";
 import type { IEntity } from "./IEntity";
+import { useStore as useStoreRaceEditor} from "@/stores/RaceEditor";
+import { useStore as useStoreTilesetEditor } from "@/stores/TilesetEditor";
+
 
 export class SearchResult {
   public path: string;
@@ -20,6 +22,7 @@ export class SearchResult {
 }
 
 function addToStores (stores: Map<string, Array<IEntity>>, store: IStoreGeneric): void {
+  console.log("store", store.$id)
   stores.set(store.$id, store.items)
 }
 
@@ -38,7 +41,8 @@ export const useStore = defineStore({
     },
     search (term: string) {
       const stores = new Map<string, Array<IEntity>>()
-      addToStores(stores, useStoreRace())
+      addToStores(stores, useStoreRaceEditor())
+      addToStores(stores, useStoreTilesetEditor())
       // TDOO: Add Other Stores to Search
       
       // Search Term
@@ -56,8 +60,8 @@ export const useStore = defineStore({
         const key = route.name?.toString() || ""
         const items = stores.get(key)
         if(items) {
-          const races = items.filter(_ => _.name.toLocaleLowerCase().includes(term)) 
-          for (const entiy of races) {
+          const entities = items.filter(_ => _.name.toLocaleLowerCase().includes(term)) 
+          for (const entiy of entities ) {
             const item = new SearchResult(route, entiy.id, entiy.name)
             collection.push(item)
           }
