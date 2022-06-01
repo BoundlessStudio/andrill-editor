@@ -18,12 +18,12 @@ provide('name', "Tileset")
   <div class="flex">
     <EditorAside />
     <EditorMain>
-      <template v-if="item">
+      <form v-if="item">
         <div class="mb-6">
           <label for="name" class="my-label">Name</label>
-          <input v-model="item.name" type="text" required class="my-custom-input">
+          <input v-model="item.name" type="text" class="my-custom-input">
         </div>
-      </template>
+      </form>
     </EditorMain>
   </div>
 </template>

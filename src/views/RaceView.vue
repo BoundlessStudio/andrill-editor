@@ -21,7 +21,7 @@ provide('help', "This is a friendly little box that will tell the you hwo a Race
       <form v-if="item">
         <div class="mb-6">
           <label for="name" class="my-label">Name</label>
-          <input id="name" v-model="item.name" type="text" required class="my-custom-input">
+          <input id="name" v-model="item.name" type="text" class="my-custom-input">
         </div>
         <div class="mb-6">
           <label for="description" class="my-label">Description</label>

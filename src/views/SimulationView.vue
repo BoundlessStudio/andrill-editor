@@ -1,9 +1,13 @@
 <script setup lang="ts">
-// TODO:
+import EditorAside from "@/components/EditorAside.vue"
+import EditorMain from "@/components/EditorMain.vue"
 </script>
 
 <template>
-  <div />
+  <div class="flex">
+    <EditorAside />
+    <EditorMain />
+  </div>
 </template>
 
 <style lang="scss"></style>
