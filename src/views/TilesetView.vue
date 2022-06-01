@@ -20,7 +20,7 @@ provide('name', "Tileset")
     <EditorMain>
       <template v-if="item">
         <div class="mb-6">
-          <label for="email" class="my-label">Name</label>
+          <label for="name" class="my-label">Name</label>
           <input v-model="item.name" type="text" required class="my-custom-input">
         </div>
       </template>
