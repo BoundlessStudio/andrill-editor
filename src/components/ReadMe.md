@@ -1,0 +1,12 @@
+Forms Components:
+- Single Line Text
+- Mulitple Line Text
+- Range Slider
+- Number Spinner
+- Color
+- Plate
+- Options (Selection)
+- Entity Lookup (Selection)
+- Image Upload
+- Curves ?
+- Forumlas ?
