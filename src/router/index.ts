@@ -70,7 +70,7 @@ const router = createRouter({
     {
       path: "/environment/biomes",
       name: "Biomes",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/BiomesView.vue"),
       meta: {
         search: ["environment", "biomes"],
         icons: ["globe"],
@@ -79,7 +79,7 @@ const router = createRouter({
     {
       path: "/environment/stages",
       name: "Stages",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/StagesView.vue"),
       meta: {
         search: ["environment", "stages"],
         icons: ["clapperboard"],
@@ -88,7 +88,7 @@ const router = createRouter({
     {
       path: "/environment/wildlife",
       name: "Wildlife",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/WildlifeView.vue"),
       meta: {
         search: ["environment", "wildlife"],
         icons: ["paw"],
@@ -97,7 +97,7 @@ const router = createRouter({
     {
       path: "/environment/materials",
       name: "Materials",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/MaterialsView.vue"),
       meta: {
         search: ["environment", "materials"],
         icons: ["leaf"],
@@ -115,7 +115,7 @@ const router = createRouter({
     {
       path: "/civilization/sites",
       name: "Sites",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/SitesView.vue"),
       meta: {
         search: ["civilization", "sites"],
         icons: ["flag"],
@@ -124,7 +124,7 @@ const router = createRouter({
     {
       path: "/civilization/religions",
       name: "Religions",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/ReligionsView.vue"),
       meta: {
         search: ["civilization", "religions"],
         icons: ["person-praying"],
@@ -133,7 +133,7 @@ const router = createRouter({
     {
       path: "/civilization/military",
       name: "Military",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/MilitaryView.vue"),
       meta: {
         search: ["civilization", "military"],
         icons: ["person-military-pointing"],
@@ -142,7 +142,7 @@ const router = createRouter({
     {
       path: "/civilization/economics",
       name: "Economics",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/EconomicsView.vue"),
       meta: {
         search: ["civilization", "economics"],
         icons: ["money-bill"],
@@ -151,7 +151,7 @@ const router = createRouter({
     {
       path: "/agent/attributes",
       name: "Attributes",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/AttributesView.vue"),
       meta: {
         search: ["agent", "attributes"],
         icons: ["superscript"],
@@ -160,7 +160,7 @@ const router = createRouter({
     {
       path: "/agent/status",
       name: "Status",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/StatusView.vue"),
       meta: {
         search: ["agent", "status"],
         icons: ["person-circle-exclamation"],
@@ -169,7 +169,7 @@ const router = createRouter({
     {
       path: "/agent/skill",
       name: "Skill",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/SkillsView.vue"),
       meta: {
         search: ["agent", "skill"],
         icons: ["arrow-up-right-dots"],
@@ -178,7 +178,7 @@ const router = createRouter({
     {
       path: "/agent/goals",
       name: "Goals",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/GoalsView.vue"),
       meta: {
         search: ["agent", "goals"],
         icons: ["bullseye"],
@@ -187,7 +187,7 @@ const router = createRouter({
     {
       path: "/agent/beliefs",
       name: "Beliefs",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/BeliefsView.vue"),
       meta: {
         search: ["agent", "beliefs"],
         icons: ["heart"],
@@ -196,7 +196,7 @@ const router = createRouter({
     {
       path: "/agent/thoughts",
       name: "Thoughts",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/ThoughtsView.vue"),
       meta: {
         search: ["agent", "thoughts"],
         icons: ["brain"],
@@ -205,7 +205,7 @@ const router = createRouter({
     {
       path: "/agent/ethics",
       name: "Ethics",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/EthicsView.vue"),
       meta: {
         search: ["agent", "ethics"],
         icons: ["ribbon"],
@@ -214,7 +214,7 @@ const router = createRouter({
     {
       path: "/agent/needs",
       name: "Needs",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/NeedsView.vue"),
       meta: {
         search: ["agent", "needs"],
         icons: ["list-check"],
@@ -223,7 +223,7 @@ const router = createRouter({
     {
       path: "/agent/actors",
       name: "Actors",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/DActorsView.vue"),
       meta: {
         search: ["agent", "actors"],
         icons: ["user-large"],
@@ -232,7 +232,7 @@ const router = createRouter({
     {
       path: "/drama/hooks",
       name: "Story Hooks",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/HooksView.vue"),
       meta: {
         search: ["drama", "hooks", "story"],
         icons: ["masks-theater"],
@@ -241,7 +241,7 @@ const router = createRouter({
     {
       path: "/drama/dialog",
       name: "Dialog",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/DialogsView.vue"),
       meta: {
         search: ["drama", "dialog"],
         icons: ["comment"],
@@ -250,7 +250,7 @@ const router = createRouter({
     {
       path: "/drama/verbs",
       name: "Verbs",
-      component: () => import("../views/DatabaseView.vue"),
+      component: () => import("../views/VerbsView.vue"),
       meta: {
         search: ["drama", "verbs"],
         icons: ["language"],
