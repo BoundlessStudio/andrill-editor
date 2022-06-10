@@ -56,17 +56,6 @@ export class Race extends Entity {
   // Image Component
   // size: w/h
   public image: string | undefined
-
-  // Cubic Bezier Curves Component 
-  // https://github.com/mizunoajigawakaru/easing-editor-vue
-  // https://mizunoajigawakaru.github.io/easing-editor-vue/
-
-  // Forumla Component
-  // https://bl.ocks.org/gabrielflorit/14435cead80c690105ebbbc35b75796f
-  // https://am.angouri.org/wiki/09.-Compilation.html
-
-  // Key Curves Component
-  // Keys
 }
 
 export const useStore = storeFactory<Race>("Races", Race)
