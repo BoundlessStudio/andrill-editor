@@ -223,7 +223,7 @@ const router = createRouter({
     {
       path: "/agent/actors",
       name: "Actors",
-      component: () => import("../views/DActorsView.vue"),
+      component: () => import("../views/ActorsView.vue"),
       meta: {
         search: ["agent", "actors"],
         icons: ["user-large"],
@@ -241,7 +241,7 @@ const router = createRouter({
     {
       path: "/drama/dialog",
       name: "Dialog",
-      component: () => import("../views/DialogsView.vue"),
+      component: () => import("../views/DialogView.vue"),
       meta: {
         search: ["drama", "dialog"],
         icons: ["comment"],

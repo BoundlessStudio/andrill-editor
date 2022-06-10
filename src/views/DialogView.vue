@@ -3,9 +3,9 @@ import EditorAside from "@/components/EditorAside.vue"
 import EditorMain from "@/components/EditorMain.vue"
 import { storeToRefs } from "pinia";
 import { provide } from "vue";
-import { useStore as useStoreDialogs } from "@/stores/DialogsEditor"
+import { useStore as useStoreDialogs } from "@/stores/DialogEditor"
 
-let dailogStore = useStoreDialogs()
+let dialogStore = useStoreDialogs()
 const { item } = storeToRefs(dialogStore)
 provide('store', dialogStore)
 provide('prefix', "Communication")
