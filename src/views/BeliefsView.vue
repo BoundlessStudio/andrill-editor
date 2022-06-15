@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import EditorAside from "@/components/EditorAside.vue"
 import EditorMain from "@/components/EditorMain.vue"
+import SingleLineText from "@/components/editors/SingleLineText.vue"
+import MulitpleLineText from "@/components/editors/MulitpleLineText.vue"
 import { storeToRefs } from "pinia";
 import { provide } from "vue";
 import { useStore as useStoreBeliefs } from "@/stores/BeliefsEditor"
@@ -19,14 +21,8 @@ provide('help', "This is a friendly little box that will tell the you how belief
     <EditorAside />
     <EditorMain>
       <form v-if="item">
-        <div class="mb-6">
-          <label for="email" class="my-label">Name</label>
-          <input v-model="item.name" type="text" required class="my-custom-input">
-        </div>
-        <div class="mb-6">
-          <label for="password" class="my-label">Description</label>
-          <textarea v-model="item.description" class="my-custom-input" />
-        </div>
+        <SingleLineText v-model="item.name" label="Name" />
+        <MulitpleLineText v-model="item.description" label="Description" />
       </form>
     </EditorMain>
   </div>

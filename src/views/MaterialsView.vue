@@ -19,14 +19,8 @@ provide('help', "This is a friendly little box that will tell the you how materi
     <EditorAside />
     <EditorMain>
       <form v-if="item">
-        <div class="mb-6">
-          <label for="email" class="my-label">Name</label>
-          <input v-model="item.name" type="text" required class="my-custom-input">
-        </div>
-        <div class="mb-6">
-          <label for="password" class="my-label">Description</label>
-          <textarea v-model="item.description" class="my-custom-input" />
-        </div>
+        <SingleLineText v-model="item.name" label="Name" />
+        <MulitpleLineText v-model="item.description" label="Description" />
       </form>
     </EditorMain>
   </div>

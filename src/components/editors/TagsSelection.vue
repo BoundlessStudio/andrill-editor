@@ -4,15 +4,12 @@ import { ref } from 'vue'
 
 const props = defineProps<{
   id?: string
-  min?: number
-  max?: number
   label: string
-  modelValue: number
+  options: Array<string>
+  modelValue: string
 }>()
 
 const id = ref(props.id || nanoid())
-const min = ref(props.min || 0)
-const max = ref(props.max || 100)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
@@ -30,15 +27,14 @@ const updateValue = (event:Event) => {
       <label :for="id" class="my-label">{{ props.label }}</label>
     </div>
     <div class="flex">
-      <input
-        :id="id"
-        :value="props.modelValue"
-        :min="min"
-        :max="max"
-        type="range"
-        class="my-input"
-        @input="updateValue">
-      <span class="my-badge w-8 text-center">{{ props.modelValue }}</span>
+      <select :id="id" :value="props.modelValue" class="my-input" @change="updateValue">
+        <option value="">
+          Selection Option
+        </option>
+        <option value="0">
+          Zero
+        </option>
+      </select>
     </div>
   </div>
 </template>

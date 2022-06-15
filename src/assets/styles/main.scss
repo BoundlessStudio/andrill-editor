@@ -17,3 +17,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.vc-color-wrap {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.vc-hue-slider__bar {
+  background: -webkit-linear-gradient(left, red 0%, yellow 16.66%, lime 33.33%, aqua 50%, blue 66.66%, fuchsia 83.33%, red 100%) !important;
+}

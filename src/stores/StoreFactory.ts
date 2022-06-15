@@ -5,6 +5,7 @@ import type { IEntity, INewEntity } from "./IEntity";
 export interface IStoreGeneric extends StoreGeneric
 {
   items: Array<IEntity>
+  collection: Array<IEntity>
   search (name:string): void
   add (): string
   delete (id:string): void 
@@ -23,9 +24,6 @@ export function storeFactory<T extends IEntity> (storeName: string, TCreator: IN
     getters: {
       collection: (state) => {
         return (state.filter == "") ? state.items : state.items.filter(_ => _.name.toLocaleLowerCase().includes(state.filter))
-      },
-      getById: (state) => {
-        return (id: string) => state.items.find((_) => _.id === id);
       },
     },
     actions: {

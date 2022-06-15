@@ -4,7 +4,7 @@ Forms Components:
 - Range Slider
 - Number Spinner
 - Color
-- Plate
+- Palette
 - Options (Selection)
 - Entity Lookup (Selection)
 - Image Upload

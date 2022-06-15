@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 import { provide } from "vue";
 import { useStore as useStoreBiomes } from "@/stores/BiomesEditor"
 
-let biomeStore = useStoreBiome()
+let biomeStore = useStoreBiomes()
 const { item } = storeToRefs(biomeStore)
 provide('store', biomeStore)
 provide('prefix', "World Area")

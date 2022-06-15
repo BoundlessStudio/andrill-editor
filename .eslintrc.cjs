@@ -49,6 +49,7 @@ module.exports = {
         "max": 1
       }
     }],
+    "vue/no-setup-props-destructure": 'off',
     // These are weird inconsistencies between eslint and typescript eslint integration. Need to make some GitHub issues.
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],

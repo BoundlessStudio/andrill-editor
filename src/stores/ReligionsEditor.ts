@@ -18,4 +18,4 @@ export class Religion extends Entity {
   public lookup: string | undefined
 }
 
-export const useStore = storeFactory<Religion>("Religion", Religion)
+export const useStore = storeFactory<Religion>("Religions", Religion)

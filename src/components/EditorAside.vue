@@ -43,7 +43,7 @@ function deleteItem (id: string) {
 }
 
 function selectItem (id: string) {
-  console.log("Route", { route_name, id });
+  // console.log("Route", { route_name, id });
   router.push({ name: route_name, params: { id } })
 }
 

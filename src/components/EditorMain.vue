@@ -17,7 +17,7 @@ const { item } = storeToRefs(store)
         </p>
       </div>
       <div class="p-3 mt-3 bg-white rounded border border-gray-200 shadow-md  dark:bg-gray-800 dark:border-gray-700">
-        <div class="h-85v overflow-y-auto">
+        <div class="h-85v overflow-y-auto pr-3">
           <slot />
         </div>
       </div>

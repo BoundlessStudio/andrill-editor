@@ -11,4 +11,5 @@ import { RouterView } from "vue-router"; //RouterLink
 <style lang="scss">
 @import "@/assets/styles/main.scss";
 @import "@/assets/styles/tailwind.scss";
+@import "vue3-colorpicker/style.css";
 </style>

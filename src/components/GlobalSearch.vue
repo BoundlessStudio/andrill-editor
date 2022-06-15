@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { watch, computed } from "vue"; // computed, ref,
 import { storeToRefs } from "pinia";
-import { useStore } from "@/stores/GlobalSearch";
-import { useRoute } from "vue-router";
+import { SearchResult, useStore } from "@/stores/GlobalSearch";
+import { useRoute, useRouter } from "vue-router";
+// import { faSleigh } from "@fortawesome/free-solid-svg-icons";
 
+const router = useRouter()
 const route = useRoute()
 const store = useStore()
 const { term, results } = storeToRefs(store);
@@ -19,8 +21,14 @@ watch(term, (current) => {
 })
 
 watch(() => route.name, () => {
-  term.value = ""
+  store.search("")
+  store.clear()
 })
+
+function select (result: SearchResult) {
+  store.search("")
+  router.push(result.path)
+}
 
 </script>
 
@@ -36,7 +44,7 @@ watch(() => route.name, () => {
     <div v-if="hasResults" class="flex justify-center">
       <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
         <template v-for="result in results" :key="result.path">
-          <router-link :to="result.path">
+          <a href="#" @click="select(result)">
             <li class="grid grid-cols-1 gap-4 px-6 py-2 border-b border-gray-200 w-full cursor-pointer">
               <div>
                 <font-awesome-layers>
@@ -46,7 +54,7 @@ watch(() => route.name, () => {
                 <span v-if="result.item"> - {{ result.item }}</span>
               </div>
             </li>
-          </router-link>
+          </a>
         </template>
       </ul>
     </div>

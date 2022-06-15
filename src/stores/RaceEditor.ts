@@ -1,15 +1,19 @@
 import { nanoid } from "nanoid";
 import { Entity } from "./IEntity";
 import { storeFactory } from "./StoreFactory";
-
+import type { ColorInputWithoutInstance } from "tinycolor2"
+ 
 export class Race extends Entity {
   constructor () { 
     super(nanoid(), "New Race")
     this.description = ""
     this.range = 0
     this.spiner = 0
-    this.plate = []
-    this.option = 0
+    this.color = "transparent" as ColorInputWithoutInstance;
+    this.gradient  = "linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%)";
+    this.palette = []
+    this.option = ""
+    this.options = []
   }
 
   // Text Area Component
@@ -29,18 +33,21 @@ export class Race extends Entity {
   // Color Class
   // # => HTML
   // RGBA => Unity
-  public color: string | undefined
+  public color: ColorInputWithoutInstance
+
+  public gradient: string
 
   // Plate Component
   // Plate Class
   // Array<Color>
-  public plate: Array<string>
+  public palette: Array<ColorInputWithoutInstance>
 
   // Options (Selection) Component
-  // multiple, options
-  // Options Class
-  // selections
-  public option: number
+  public option: string
+
+  // Options (Tags) Component
+  // multiple
+  public options: Array<string>
 
   // Entity Lookup (Selection)
   // Lookup Class
